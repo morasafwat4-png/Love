@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مفاجأة ❤️</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+#login{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+input{
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    text-align:center;
+    font-size:18px;
+}
+
+button{
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    background:#fff;
+    color:#ff4e73;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#content{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+}
+
+#counter{
+    margin:15px;
+    font-size:18px;
+}
+
+#love{
+    position:fixed;
+    bottom:20px;
+    font-size:28px;
+    opacity:0;
+    animation: beat 1.5s infinite;
+}
+
+@keyframes beat{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.12);}
+    100%{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+    <h2>اكتبي تاريخ ميلادك 💖</h2>
+    <input type="password" id="password" placeholder="8/3">
+    <button onclick="checkPassword()">دخول</button>
+</div>
+
+<div id="content">
+    <h2>منور الدنيا يا قلبي ❤️</h2>
+    <div id="counter"></div>
+
+    <iframe width="320" height="180"
+    src="https://www.youtube.com/embed/8vKuZaL3nsM?autoplay=1"
+    allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
+</div>
+
+<div id="love">بحبك ❤️</div>
+
+<script>
+
+// الباسورد 8/3
+function checkPassword(){
+    let pass = document.getElementById("password").value;
+    if(pass === "8/3"){
+        document.getElementById("login").style.display="none";
+        document.getElementById("content").style.display="flex";
+        startCounter();
+        showLove();
+    }else{
+        alert("غلط يا روحي 💔");
+    }
+}
+
+// عداد من 4/11/2024
+function startCounter(){
+    const startDate = new Date("2024-11-04T00:00:00");
+
+    setInterval(()=>{
+        const now = new Date();
+        const diff = now - startDate;
+
+        const days = Math.floor(diff/(1000*60*60*24));
+        const hours = Math.floor((diff/(1000*60*60))%24);
+        const minutes = Math.floor((diff/(1000*60))%60);
+        const seconds = Math.floor((diff/1000)%60);
+
+        document.getElementById("counter").innerText =
+        `احنا بنتكلم بقالنا ${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية ❤️`;
+    },1000);
+}
+
+// اظهار بحبك بعد 3 ثواني
+function showLove(){
+    setTimeout(()=>{
+        document.getElementById("love").style.opacity="1";
+    },3000);
+}
+
+</script>
+
+</body>
+  </html>
