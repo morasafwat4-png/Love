@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فلانتين خاص</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
+        animation: bgPulse 10s infinite alternate;
+    }
+
+    @keyframes bgPulse {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    h1, h2, h3 {
+        margin: 10px;
+    }
+
+    .heart {
+        color: red;
+        font-size: 3em;
+        animation: beat 1s infinite;
+        display: inline-block;
+    }
+
+    @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.3); }
+    }
+
+    #loveMessage {
+        font-size: 1.3em;
+        margin: 15px 0;
+    }
+
+    #countdown {
+        font-size: 1.5em;
+        margin: 20px 0;
+    }
+
+    #secret {
+        font-size: 2.5em;
+        margin-top: 20px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 1s ease-in-out;
+    }
+
+    #secret.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    iframe {
+        margin-top: 20px;
+        border-radius: 15px;
+    }
+</style>
+</head>
+<body>
+
+<h1>انا بحبك اوي ي روح قلبي <span class="heart">❤️</span></h1>
+<h2>ربنا يخليكي ليا ي ام عيالي وميحرمنيش منك ابدا وانتي بتاعتي انا وبس</h2>
+<h2>حبي ليكي بيزيد يوم ورا يوم ومش هيقف خااالص</h2>
+<h1 class="heart">بحبـــكـ ي روح قلبـــي ❤️💝</h1>
+
+<div id="countdown"></div>
+
+<iframe width="320" height="180" src="https://www.youtube.com/embed/8vKuZaL3nsM?autoplay=1" title="فلانتين أغنية" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<h2 id="secret">بعشقــكــك💖</h2>
+
+<script>
+// إعداد التاريخ
+const startDate = new Date("2025-07-16T20:20:00");
+
+function updateCountdown() {
+    const now = new Date();
+    const diff = now - startDate;
+
+    if (diff < 0) return;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("countdown").innerText = `إحنا بنتكلم من: ${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
+}
+
+// تحديث كل ثانية
+setInterval(updateCountdown, 1000);
+
+// ظهور كلمة "بعشقــكــك💖" بعد 5 ثواني
+setTimeout(() => {
+    document.getElementById("secret").classList.add('show');
+}, 5000);
+</script>
+
+</body>
+</html>
